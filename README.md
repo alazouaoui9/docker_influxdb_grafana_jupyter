@@ -19,11 +19,15 @@ GRANT ALL ON prometheus TO prom;
 ALTER RETENTION POLICY "autogen" ON "prometheus" DURATION 1d REPLICATION 1 SHARD DURATION 1d DEFAULT;
 
 SHOW RETENTION POLICIES ON prometheus;
+
 exit
+
 influxd restore -metadir /var/lib/influxdb/meta -database prometheus -datadir /var/lib/influxdb/data /usr/share/
+
 exit
 
 sudo docker stop influxdb
+
 sudo docker start influxdb
 
 #### grafana
